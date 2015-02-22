@@ -1,0 +1,37 @@
+<html>
+  <head>
+<meta name="description" content="JavaScript Crowdsourcing plugin CompetitiveList turns a HTML list in a round-robin tournament">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <div id="bootstrap_modal" class="modal hide fade"></div>
+          
+          <div id="competitive_list_example">
+            <ul class="nav nav-tabs nav-stacked list-striped competitive_list"> 
+            </ul>
+            
+            <p>
+              <a href="#" id="add_competitor_link">Add Competitor</a> <a href="#" class="competitive_list_start_link">Sort through round robin tournament</a> 
+              <a href="#" class="save_match_results_link">Save match results</a>
+            </p>
+          </div>
+          <p></p>
+          <p>
+            <strong>Competitors</strong> <textarea id="competitors_text"></textarea>
+          </p>
+          <p>
+            <strong>Matches</strong> <textarea id="matches_text"></textarea>
+          </p>
+          <p><button type="button" id="save_data_button">Save Data</button></p>
+          <p><button type="button" id="load_data_button">Load Data</button></p>
+        </div>
+      </div>
+    </div>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="https://raw.githubusercontent.com/gawlista/competitive_list.js/master/competitive_list.js"></script>
+  </body>
+</html>
