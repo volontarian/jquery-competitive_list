@@ -230,9 +230,10 @@ class @CompetitiveList
 <div class="controls" style="margin-left:50px">
   <table>
     <tr>      
-      <td style="width:325px">
+      <td style="width:325px; text-align:right;">
         #{competitorStrings[0]}
       </td>
+      <td>&nbsp;&nbsp;&nbsp;</td>
       <td>#{radioButtons[0]}</td>
       <td>&nbsp;&nbsp;VS.&nbsp;&nbsp;&nbsp;</td>
       <td>#{radioButtons[1]}</td>
@@ -468,10 +469,11 @@ class @CompetitiveList
       +parseInt($(b).data('wins')) - +parseInt($(a).data('wins'))
     ).appendTo $wrapper
       
-    data = { _method: 'put', positions: @getPositions(), matches: JSON.stringify(window.matches) }  
-    $.post($('.competitive_list').data('update-all-positions-path'), data).always(=>
-      after_update_request_proc() unless after_update_request_proc == null
-    )       
+    unless $('.competitive_list').data('update-all-positions-path') == undefined  
+      data = { _method: 'put', positions: @getPositions(), matches: JSON.stringify(window.matches) }  
+      $.post($('.competitive_list').data('update-all-positions-path'), data).always(=>
+        after_update_request_proc() unless after_update_request_proc == null
+      )       
     
   getPositions: ->
     positions = {}
