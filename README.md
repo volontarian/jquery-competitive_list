@@ -19,21 +19,21 @@ You can either watch [this screencast](https://www.youtube.com/watch?v=UlXJoYn_d
         <li id="competitor_1" data-id="1" data-position="1">
           <span class="competitor_position">1</span>
           P1
-          <span class="competitor_name hide" data-proc-argument="value">
+          <span class="competitor_name hide">
             P1
           </span>
         </li>
         <li id="competitor_2" data-id="2" data-position="2">
           <span class="competitor_position">2</span>
           P2
-          <span class="competitor_name hide" data-proc-argument="value">
+          <span class="competitor_name hide">
             P2
           </span>
         </li>
         <li id="competitor_3" data-id="3" data-position="3">
           <span class="competitor_position">3</span>
           P3
-          <span class="competitor_name hide" data-proc-argument="value">
+          <span class="competitor_name hide">
             P3
           </span>
         </li>
@@ -45,30 +45,73 @@ You can either watch [this screencast](https://www.youtube.com/watch?v=UlXJoYn_d
           <span class='icon-warning-sign'></span> Save match results
         </button>
       </p>
-      
-      <script src="//code.jquery.com/jquery.min.js"></script>
-      <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-      
-      <script>
-      //<![CDATA[
-      
-        window.matches = []
-      
-        $( document ).ready(function() {
-          window.competitive_list = new CompetitiveList({
-            id: '#competitive_list_for_items',
-            competitor_name_proc: function(value) {
-              return value
-            }
-          });
-        });
-        
-      //]]>
-      </script>
     </div>
+    
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <script>
+    //<![CDATA[
+    
+      window.matches = []
+    
+      $( document ).ready(function() {
+        window.competitive_list = new CompetitiveList({ id: '#competitive_list_for_items' });
+      });
+      
+    //]]>
+    </script>
   </body>
 </html>
 ```
+
+## Auto Winner
+
+A winner of a match will be appointed automatically sometimes, what reduces the matches to vote dramatically.
+So the winner of the match automatically beats the competitors which have been defeated by the loser of the match and furthermore the defeaters of the match winner also beat the match loser automatically.
+
+## competitor_name_proc
+
+You can pass the constructor of CompetitiveList a proc of which the result will be rendered in the match modal at the place of the competitor.
+data-proc-argument of .competitor_name will be passed to this proc.
+
+```html
+<div id="competitive_list_for_items">    
+  <ul class="competitive_list" data-update-all-positions-path="/items/update_all">
+    <li id="competitor_1" data-id="1" data-position="1">
+      <span class="competitor_position">1</span>
+      P1
+      <span class="competitor_name hide" data-proc-argument="value">
+        P1
+      </span>
+    </li>
+    
+    ...
+    
+  </ul>
+</div>
+
+<script>
+//<![CDATA[
+
+  $( document ).ready(function() {
+    window.competitive_list = new CompetitiveList({
+      id: '#competitive_list_for_items',
+      competitor_name_proc: function(value) {
+        return value;
+      }
+    });
+  });
+  
+//]]>
+</script>
+```
+
+## @moveCompetitorToPosition(competitorId, position, after_update_request_proc = null)
+
+You can move a competitor to a position without rating all matches which is good for drag & drop.
+In that case the competitor loses against all opponents with position <= position - 1 unless position is 1.
+Furthermore the competitor wins against all opponents with position >= position if competitor is not yet on this position else the competitor wins against all opponents with position >= position + 1.
 
 ## Contribution
 
