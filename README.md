@@ -1,5 +1,9 @@
 # competitive_list.js
 
+## Demo
+
+You can either watch [this screencast](https://www.youtube.com/watch?v=UlXJoYn_dek) or try it in [this JS Bin](http://jsbin.com/marotixigo).
+
 ## Example
 
 ```html
@@ -51,7 +55,7 @@
         window.matches = []
       
         $( document ).ready(function() {
-          window.competitive_list_for_tracks = new CompetitiveList({
+          window.competitive_list = new CompetitiveList({
             id: '#competitive_list_for_items',
             competitor_name_proc: function(value) {
               return value
@@ -73,7 +77,7 @@ Pleae follow this screencast http://railscasts.com/episodes/300-contributing-to-
 To change the code of the plugin you should only change the file under app/assets/javascripts/competitive_list.js.coffee
 The tests can be run after you started the Rails server and go to /jasmine.
 
-When you're done with that you can release the code:
+When you're done with that you can release the code as:
 
-* as vanilla JavaScript: copy & paste http://localhost:3000/assets/competitive_list.js?body=1 to /competitive_list.js in the repository
+* vanilla JavaScript: copy & paste http://localhost:3000/assets/competitive_list.js?body=1 to /competitive_list.js in the repository
 * minified JavaScript: run RAILS_ENV=production bin/rake assets:precompile, copy /public/assets/competitive_list-#{token}.js to /competitive_list.min.js in the repository and run rm -rf public/assets/
