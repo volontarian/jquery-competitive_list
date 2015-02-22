@@ -75,7 +75,7 @@ You can either watch [this screencast](https://www.youtube.com/watch?v=UlXJoYn_d
 Pleae follow this screencast http://railscasts.com/episodes/300-contributing-to-open-source
 
 To change the code of the plugin you should only change the file under app/assets/javascripts/competitive_list.js.coffee
-The tests can be run after you started the Rails server and go to /jasmine.
+The tests can be run after you started the Rails server and go to http://localhost:3000/jasmine.
 
 When you're done with that you can release the code as:
 
