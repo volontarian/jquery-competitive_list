@@ -122,5 +122,5 @@ The tests can be run after you started the Rails server and go to http://localho
 
 When you're done with that you can release the code as:
 
-* vanilla JavaScript: copy & paste http://localhost:3000/assets/competitive_list.js?body=1 to /competitive_list.js in the repository
+* uncompressed vanilla JavaScript: copy & paste http://localhost:3000/assets/competitive_list.js?body=1 to /competitive_list.js in the repository
 * minified JavaScript: run RAILS_ENV=production bin/rake assets:precompile, copy /public/assets/competitive_list-#{token}.js to /competitive_list.min.js in the repository and run rm -rf public/assets/
