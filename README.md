@@ -49,7 +49,7 @@ You can either watch [this screencast](https://www.youtube.com/watch?v=UlXJoYn_d
     
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-    
+    <script src="https://raw.githubusercontent.com/gawlista/competitive_list.js/master/competitive_list.min.js"></script>
     <script>
     //<![CDATA[
     
