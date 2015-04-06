@@ -74,7 +74,7 @@
         $('#bootstrap_modal').modal('show')
     
     setCompetitors: ->
-      @competitors = jQuery.map($('.competitive_list li'), (c) ->
+      @competitors = jQuery.map(@$el.find('.competitive_list li'), (c) ->
         return $(c).data('id')
       )
         
@@ -479,15 +479,16 @@
       $.each Object.keys(winsByCompetitor), (index, competitorId) ->
         $('#competitor_' + competitorId).data 'wins', winsByCompetitor[competitorId]
         
-      $wrapper = $('.competitive_list')
+      $wrapper = @$el.find('.competitive_list')
       
       $wrapper.find('li').sort((a, b) ->
         +parseInt($(b).data('wins')) - +parseInt($(a).data('wins'))
       ).appendTo $wrapper
+      positions = @getPositions()  
         
-      unless $('.competitive_list').data('update-all-positions-path') == undefined  
-        data = { _method: 'put', positions: @getPositions(), matches: JSON.stringify(@matches) }  
-        $.post($('.competitive_list').data('update-all-positions-path'), data).always(=>
+      unless $wrapper.data('update-all-positions-path') == undefined  
+        data = { _method: 'put', positions: positions, matches: JSON.stringify(@matches) }  
+        $.post($wrapper.data('update-all-positions-path'), data).always(=>
           after_update_request_proc() unless after_update_request_proc == null
         )       
       
@@ -495,7 +496,7 @@
       positions = {}
       currentPosition = 1
       
-      $.each $('.competitive_list li'), (index, element) ->
+      $.each @$el.find('.competitive_list li'), (index, element) ->
         positions[currentPosition] = $(element).data('id')
         $(element).data('position', currentPosition)  
         $(element).find('.competitor_position').html(currentPosition)

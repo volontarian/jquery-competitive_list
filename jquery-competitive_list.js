@@ -101,7 +101,7 @@
       };
 
       CompetitiveList.prototype.setCompetitors = function() {
-        return this.competitors = jQuery.map($('.competitive_list li'), function(c) {
+        return this.competitors = jQuery.map(this.$el.find('.competitive_list li'), function(c) {
           return $(c).data('id');
         });
       };
@@ -451,7 +451,7 @@
       };
 
       CompetitiveList.prototype.sortByMostWins = function(after_update_request_proc) {
-        var $wrapper, data, winsByCompetitor;
+        var $wrapper, data, positions, winsByCompetitor;
         if (after_update_request_proc == null) {
           after_update_request_proc = null;
         }
@@ -470,17 +470,18 @@
         $.each(Object.keys(winsByCompetitor), function(index, competitorId) {
           return $('#competitor_' + competitorId).data('wins', winsByCompetitor[competitorId]);
         });
-        $wrapper = $('.competitive_list');
+        $wrapper = this.$el.find('.competitive_list');
         $wrapper.find('li').sort(function(a, b) {
           return +parseInt($(b).data('wins')) - +parseInt($(a).data('wins'));
         }).appendTo($wrapper);
-        if ($('.competitive_list').data('update-all-positions-path') !== void 0) {
+        positions = this.getPositions();
+        if ($wrapper.data('update-all-positions-path') !== void 0) {
           data = {
             _method: 'put',
-            positions: this.getPositions(),
+            positions: positions,
             matches: JSON.stringify(this.matches)
           };
-          return $.post($('.competitive_list').data('update-all-positions-path'), data).always((function(_this) {
+          return $.post($wrapper.data('update-all-positions-path'), data).always((function(_this) {
             return function() {
               if (after_update_request_proc !== null) {
                 return after_update_request_proc();
@@ -494,7 +495,7 @@
         var currentPosition, positions;
         positions = {};
         currentPosition = 1;
-        $.each($('.competitive_list li'), function(index, element) {
+        $.each(this.$el.find('.competitive_list li'), function(index, element) {
           positions[currentPosition] = $(element).data('id');
           $(element).data('position', currentPosition);
           $(element).find('.competitor_position').html(currentPosition);
