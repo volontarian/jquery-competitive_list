@@ -154,7 +154,7 @@
         rows = "";
         $.each(this.currentAutoWinnerMatches, (function(_this) {
           return function(index, match) {
-            var even_or_odd, html, manualWinnerChangedHtml;
+            var even_or_odd, manualWinnerChangedHtml;
             even_or_odd = '';
             if (index % 2 === 0) {
               even_or_odd = 'even';
@@ -165,7 +165,7 @@
             if (match['manual_winner_changed'] === true) {
               manualWinnerChangedHtml = "<a class=\"bootstrap_tooltip\" href=\"#\" data-toggle=\"tooltip\" title=\"The winner you once have set has been changed automatically!\">\n  <i class='icon-warning-sign'/>\n</a>";
             }
-            return rows += html = "<tr class=\"" + even_or_odd + "\">\n  <td>\n    " + manualWinnerChangedHtml + "\n  </td>\n  <td style=\"width:200px\">" + (_this.nameOfCompetitor(match['winner'], false)) + "</td>\n  <td><input type=\"radio\" checked=\"checked\" disabled=\"disabled\"/></td>\n  <td>&nbsp;&nbsp;VS.&nbsp;&nbsp;&nbsp;</td>\n  <td><input type=\"radio\" disabled=\"disabled\"/></td>\n  <td>&nbsp;&nbsp;&nbsp;</td>\n  <td style=\"width:200px\">" + (_this.nameOfCompetitor(_this.otherCompetitorOfMatch(match, match['winner']), false)) + "</td>\n  <td style=\"text-align:center\">\n    <a class=\"bootstrap_tooltip\" href=\"#\" data-toggle=\"tooltip\" data-html=\"true\" title=\"" + match['auto_winner_reason'] + "\">\n      <i class=\"icon-question-sign\"/>\n    </a>\n  </td>\n  <td style=\"width:200px\">" + (_this.nameOfCompetitor(match['foot_note_competitor'], false)) + "</td>\n</tr>        ";
+            return rows += "<tr class=\"" + even_or_odd + "\">\n  <td>\n    " + manualWinnerChangedHtml + "\n  </td>\n  <td style=\"width:200px\">" + (_this.nameOfCompetitor(match['winner'], false)) + "</td>\n  <td><input type=\"radio\" checked=\"checked\" disabled=\"disabled\"/></td>\n  <td>&nbsp;&nbsp;VS.&nbsp;&nbsp;&nbsp;</td>\n  <td><input type=\"radio\" disabled=\"disabled\"/></td>\n  <td>&nbsp;&nbsp;&nbsp;</td>\n  <td style=\"width:200px\">" + (_this.nameOfCompetitor(_this.otherCompetitorOfMatch(match, match['winner']), false)) + "</td>\n  <td style=\"text-align:center\">\n    <a class=\"bootstrap_tooltip\" href=\"#\" data-toggle=\"tooltip\" data-html=\"true\" title=\"" + match['auto_winner_reason'] + "\">\n      <i class=\"icon-question-sign\"/>\n    </a>\n  </td>\n  <td style=\"width:200px\">" + (_this.nameOfCompetitor(match['foot_note_competitor'], false)) + "</td>\n</tr>        ";
           };
         })(this));
         autoWinnerMatchesHtml = "<h4>Auto Winners due to Result of last Match</h4>\n<table>\n  <tr>\n    <td><strong>Last Match was:&nbsp;&nbsp;</strong></td>\n    <td>" + (this.nameOfCompetitor(this.currentMatch['winner'], false)) + "</td>\n    <td>&nbsp;&nbsp;<input type=\"radio\" checked=\"checked\" disabled=\"disabled\"/></td>\n    <td>&nbsp;&nbsp;VS.&nbsp;&nbsp;&nbsp;</td>\n    <td><input type=\"radio\" disabled=\"disabled\"/></td>\n    <td>&nbsp;&nbsp;&nbsp;</td>\n    <td>" + (this.nameOfCompetitor(this.otherCompetitorOfMatch(this.currentMatch, this.currentMatch['winner']), false)) + "</td>\n  </tr>\n</table>\n<table class=\"table table-striped\">\n  <thead>\n    <tr class=\"odd\">\n      <th></th>\n      <th>Winner</th>\n      <th></th>\n      <th></th>\n      <th></th>\n      <th></th>\n      <th>Loser</th>\n      <th>Reason</th>\n      <th>[1]</th>\n    </tr>\n  </thead>\n  <tbody>\n    " + rows + "\n  </tbody>\n</table>   ";

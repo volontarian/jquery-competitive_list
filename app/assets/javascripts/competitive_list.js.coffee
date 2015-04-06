@@ -133,7 +133,7 @@ class @CompetitiveList
 </a>
 """ 
         
-        rows +=     html = """
+        rows += """
 <tr class="#{even_or_odd}">
   <td>
     #{manualWinnerChangedHtml}
