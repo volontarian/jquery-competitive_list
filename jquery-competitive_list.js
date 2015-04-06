@@ -52,13 +52,13 @@
             return _this.$el.find('.save_match_results_link').hide();
           };
         })(this));
-        $('#bootstrap_modal .cancel_tournament_button').on('click', (function(_this) {
+        $(document.body).on('click', '#bootstrap_modal .cancel_tournament_button', (function(_this) {
           return function(event) {
             event.preventDefault();
             return _this.cancelTournament();
           };
         })(this));
-        return $('#bootstrap_modal .select_winner_button').on('click', (function(_this) {
+        return $(document.body).on('click', '#bootstrap_modal .select_winner_button', (function(_this) {
           return function(event) {
             event.preventDefault();
             return _this.appointWinnerOfMatchByInput();

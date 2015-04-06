@@ -32,11 +32,11 @@
         @sortByMostWins()
         @$el.find('.save_match_results_link').hide()
       
-      $('#bootstrap_modal .cancel_tournament_button').on 'click', (event) =>
+      $(document.body).on 'click', '#bootstrap_modal .cancel_tournament_button', (event) =>
         event.preventDefault()
         @cancelTournament()   
       
-      $('#bootstrap_modal .select_winner_button').on 'click', (event) =>
+      $(document.body).on 'click', '#bootstrap_modal .select_winner_button', (event) =>
         event.preventDefault()
         @appointWinnerOfMatchByInput()
     
