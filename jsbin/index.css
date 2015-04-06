@@ -1,0 +1,19 @@
+.list-striped li:nth-child(odd) {
+    background-color: #F9F9F9;
+}
+
+.nav a {
+  font-size: 14px !important;
+}
+  
+.modal-body {
+  overflow-y: visible;
+}
+  
+.scrollable-modal-body {
+  overflow-y: auto;
+}
+  
+#bootstrap_modal {
+  width: 800px !important;
+}
