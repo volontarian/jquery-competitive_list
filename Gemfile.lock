@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/michael-harrison/jasminerice.git
-  revision: a8cb4e15e51f18f8ddc8ecc5b1361103d1a71f5b
-  specs:
-    jasminerice (2.0.0)
-      coffee-rails
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -50,6 +43,12 @@ GEM
     execjs (2.3.0)
     hike (1.2.3)
     i18n (0.7.0)
+    jasmine-core (2.2.0)
+    jasmine-rails (0.10.7)
+      jasmine-core (>= 1.3, < 3.0)
+      phantomjs (< 2.0)
+      railties (>= 3.1.0)
+      sprockets-rails
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -59,6 +58,7 @@ GEM
     mime-types (2.4.3)
     minitest (5.5.1)
     multi_json (1.10.1)
+    phantomjs (1.9.8.0)
     rack (1.5.2)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -85,7 +85,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
-    spring (1.3.2)
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -111,9 +110,8 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass-rails (~> 2.3.2.1)
   coffee-rails (~> 4.0.0)
-  jasminerice!
+  jasmine-rails (~> 0.10.7)
   jquery-rails
   rails (= 4.1.9)
-  spring
   sqlite3
   uglifier (>= 1.3.0)
