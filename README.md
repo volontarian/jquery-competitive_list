@@ -2,7 +2,7 @@
 
 ## Demo
 
-You can either watch [this screencast](https://www.youtube.com/watch?v=UlXJoYn_dek) or try it in [this JS Bin](http://jsbin.com/zobaqa/1/).
+You can either watch [this screencast](https://www.youtube.com/watch?v=UlXJoYn_dek) or try it in [this JS Bin](http://jsbin.com/zobaqa/3/).
 
 ## Example
 
