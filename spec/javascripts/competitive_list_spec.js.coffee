@@ -245,7 +245,7 @@ describe 'CompetitiveList', ->
           
           expect(window.matches).toEqual [
             { competitors: [1, 2], winner: 1 },
-            { competitors: [1, 3], winner: 1, manual_winner_changed: false },
+            { competitors: [1, 3], winner: 1 },
             { competitors: [2, 3], winner: 2 }
           ]
           
@@ -264,7 +264,7 @@ describe 'CompetitiveList', ->
           expect(window.matches).toEqual [
             { competitors: [1, 2], winner: 1 },
             { competitors: [1, 3], winner: 3 },
-            { competitors: [2, 3], winner: 3, manual_winner_changed: false }
+            { competitors: [2, 3], winner: 3 }
           ]
     context 'position is greater than 1', ->
       context 'competitor is already on this positon', ->

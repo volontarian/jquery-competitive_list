@@ -262,7 +262,7 @@ class @CompetitiveList
     <button type="button" id="close_bootstrap_modal_button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h3>#{modalTitle}</h3>
   </div>
-  <div class="modal-body scrollable-modal-body">
+  <div class="modal-body" style="overflow-y:auto;">
     #{modalBodyHtml}
   </div>
   <div class="modal-footer" style="text-align:left;">
@@ -306,6 +306,14 @@ class @CompetitiveList
     @nextMatch(false)
       
   appointWinnerOfMatch: (matchIndex, winnerId, loserId, decrementMatchesLeft) ->
+    if @movingCompetitorToPosition == true
+      delete window.matches[matchIndex]['manual_winner_changed']
+      delete window.matches[matchIndex]['auto_winner']
+      delete window.matches[matchIndex]['foot_note_competitor']
+      delete window.matches[matchIndex]['auto_winner_type']
+      delete window.matches[matchIndex]['auto_winner_recursion']
+      delete window.matches[matchIndex]['auto_winner_reason']
+      
     window.matches[matchIndex]['winner'] = winnerId
     @matchesLeft = @matchesLeft - 1 if decrementMatchesLeft
     
@@ -340,11 +348,11 @@ class @CompetitiveList
         @removeCompetitorsComparisonResult(winnerId, otherLoserId) 
         manual_winner_changed = true unless @movingCompetitorToPosition == true || match['auto_winner'] == true
       
-      window.matches[index]['manual_winner_changed'] = manual_winner_changed  
       @appointWinnerOfMatch(index, winnerId, otherLoserId, match['winner'] == undefined)
       
       return true if @movingCompetitorToPosition == true
       
+      window.matches[index]['manual_winner_changed'] = manual_winner_changed  
       window.matches[index]['auto_winner'] = true
       window.matches[index]['foot_note_competitor'] = loserId
       window.matches[index]['auto_winner_type'] = 0
@@ -377,10 +385,9 @@ class @CompetitiveList
           
           @appointWinnerOfMatch(index, competitorId, loserId, match['winner']  == undefined)
           
-          window.matches[index]['manual_winner_changed'] = manual_winner_changed  
-          
           return true if @movingCompetitorToPosition == true
           
+          window.matches[index]['manual_winner_changed'] = manual_winner_changed 
           window.matches[index]['auto_winner'] = true
           window.matches[index]['auto_winner_type'] = 1
           window.matches[index]['foot_note_competitor'] = winnerId

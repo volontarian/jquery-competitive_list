@@ -213,7 +213,7 @@
         modalFooterHtml = "<p id=\"" + (this.competitiveListOptions['id'].replace('#', '')) + "_buttons\">\n  <button type=\"button\" class=\"cancel_tournament_button\" class=\"btn\">Save match results and close window</button> &nbsp;&nbsp;&nbsp;&nbsp;\n  <button type=\"button\" class=\"select_winner_button\" class=\"btn btn-primary\">Submit</button>\n</p>";
       }
       modalBodyHtml += autoWinnerMatchesHtml;
-      html = "<form class=\"form-inline\" style=\"margin:0px;\">\n  <div class=\"modal-header\">\n    <button type=\"button\" id=\"close_bootstrap_modal_button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>" + modalTitle + "</h3>\n  </div>\n  <div class=\"modal-body scrollable-modal-body\">\n    " + modalBodyHtml + "\n  </div>\n  <div class=\"modal-footer\" style=\"text-align:left;\">\n    " + modalFooterHtml + "\n  </div>\n</form>";
+      html = "<form class=\"form-inline\" style=\"margin:0px;\">\n  <div class=\"modal-header\">\n    <button type=\"button\" id=\"close_bootstrap_modal_button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>" + modalTitle + "</h3>\n  </div>\n  <div class=\"modal-body\" style=\"overflow-y:auto;\">\n    " + modalBodyHtml + "\n  </div>\n  <div class=\"modal-footer\" style=\"text-align:left;\">\n    " + modalFooterHtml + "\n  </div>\n</form>";
       $('#bootstrap_modal').html(html);
       $('.bootstrap_tooltip').tooltip();
       this.currentAutoWinnerMatches = [];
@@ -255,6 +255,14 @@
     };
 
     CompetitiveList.prototype.appointWinnerOfMatch = function(matchIndex, winnerId, loserId, decrementMatchesLeft) {
+      if (this.movingCompetitorToPosition === true) {
+        delete window.matches[matchIndex]['manual_winner_changed'];
+        delete window.matches[matchIndex]['auto_winner'];
+        delete window.matches[matchIndex]['foot_note_competitor'];
+        delete window.matches[matchIndex]['auto_winner_type'];
+        delete window.matches[matchIndex]['auto_winner_recursion'];
+        delete window.matches[matchIndex]['auto_winner_reason'];
+      }
       window.matches[matchIndex]['winner'] = winnerId;
       if (decrementMatchesLeft) {
         this.matchesLeft = this.matchesLeft - 1;
@@ -297,11 +305,11 @@
               manual_winner_changed = true;
             }
           }
-          window.matches[index]['manual_winner_changed'] = manual_winner_changed;
           _this.appointWinnerOfMatch(index, winnerId, otherLoserId, match['winner'] === void 0);
           if (_this.movingCompetitorToPosition === true) {
             return true;
           }
+          window.matches[index]['manual_winner_changed'] = manual_winner_changed;
           window.matches[index]['auto_winner'] = true;
           window.matches[index]['foot_note_competitor'] = loserId;
           window.matches[index]['auto_winner_type'] = 0;
@@ -340,10 +348,10 @@
                 }
               }
               _this.appointWinnerOfMatch(index, competitorId, loserId, match['winner'] === void 0);
-              window.matches[index]['manual_winner_changed'] = manual_winner_changed;
               if (_this.movingCompetitorToPosition === true) {
                 return true;
               }
+              window.matches[index]['manual_winner_changed'] = manual_winner_changed;
               window.matches[index]['auto_winner'] = true;
               window.matches[index]['auto_winner_type'] = 1;
               window.matches[index]['foot_note_competitor'] = winnerId;
