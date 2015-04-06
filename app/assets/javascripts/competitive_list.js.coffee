@@ -32,11 +32,11 @@
         @sortByMostWins()
         @$el.find('.save_match_results_link').hide()
       
-      @$el.find('.cancel_tournament_button').on 'click', (event) =>
+      $('#bootstrap_modal .cancel_tournament_button').on 'click', (event) =>
         event.preventDefault()
         @cancelTournament()   
       
-      @$el.find('.select_winner_button').on 'click', (event) =>
+      $('#bootstrap_modal .select_winner_button').on 'click', (event) =>
         event.preventDefault()
         @appointWinnerOfMatchByInput()
     
@@ -218,7 +218,7 @@
       if @currentMatch == null 
         modalTitle = 'No matches to rate left.' 
         modalFooterHtml = """
-  <p class="competitive_list_modal_footer_buttons">
+  <p>
     <button type="button" class="cancel_tournament_button" class="btn">Save match results and close window</button>
   </p>      
   """      
@@ -257,7 +257,7 @@
   </div>     
   """
         modalFooterHtml = """
-  <p class="competitive_list_modal_footer_buttons">
+  <p>
     <button type="button" class="cancel_tournament_button" class="btn">Save match results and close window</button> &nbsp;&nbsp;&nbsp;&nbsp;
     <button type="button" class="select_winner_button" class="btn btn-primary">Submit</button>
   </p>
