@@ -1,4 +1,4 @@
-# competitive_list.js [![Build Status](https://travis-ci.org/volontarian/competitive_list.js.svg?branch=master)](https://travis-ci.org/volontarian/competitive_list.js)
+# competitive_list.js [![Build Status](https://travis-ci.org/volontarian/jquery-competitive_list.svg?branch=master)](https://travis-ci.org/volontarian/jqery-competitive_list)
 
 ## Demo
 
@@ -56,7 +56,7 @@ You can either watch [this screencast](https://www.youtube.com/watch?v=UlXJoYn_d
       window.matches = []
     
       $( document ).ready(function() {
-        window.competitive_list = new CompetitiveList({ id: '#competitive_list_for_items' });
+        $('#competitive_list_for_items').competitiveList();
       });
       
     //]]>
@@ -95,8 +95,7 @@ data-proc-argument of .competitor_name will be passed to this proc.
 //<![CDATA[
 
   $( document ).ready(function() {
-    window.competitive_list = new CompetitiveList({
-      id: '#competitive_list_for_items',
+    $('#competitive_list_for_items').competitiveList({
       competitor_name_proc: function(value) {
         return value;
       }
