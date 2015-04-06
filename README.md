@@ -1,4 +1,4 @@
-# competitive_list.js
+# competitive_list.js [![Build Status](https://travis-ci.org/volontarian/competitive_list.js.svg?branch=master)](https://travis-ci.org/volontarian/competitive_list.js)
 
 ## Demo
 
@@ -118,7 +118,12 @@ Furthermore the competitor wins against all opponents with position >= position 
 Pleae follow this screencast http://railscasts.com/episodes/300-contributing-to-open-source
 
 To change the code of the plugin you should only change the file under app/assets/javascripts/competitive_list.js.coffee
-The tests can be run after you started the Rails server and go to http://localhost:3000/jasmine.
+The tests can be run after you started the Rails server and go to http://localhost:3000/specs
+Alternatively the tests can be run by this command:
+
+```bash
+RAILS_ENV=test bundle exec rake spec:javascript
+```
 
 When you're done with that you can release the code as:
 
