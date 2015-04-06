@@ -1,8 +1,7 @@
 this.CompetitiveListExtension = (function() {
   function CompetitiveListExtension() {
-    window.competitive_list = new CompetitiveList({
-      id: '#competitive_list_example'
-    });
+    $('#competitive_list_example').competitiveList();
+    
     $(document.body).on("click", "#save_data_button", (function(_this) {
       return function(event) {
         event.preventDefault();
