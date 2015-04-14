@@ -53,10 +53,9 @@ You can either watch [this screencast](https://www.youtube.com/watch?v=UlXJoYn_d
     <script>
     //<![CDATA[
     
-      window.matches = []
-    
       $( document ).ready(function() {
         $('#competitive_list_for_items').competitiveList();
+        $('#competitive_list_for_items').data('competitiveList').matches = []
       });
       
     //]]>
