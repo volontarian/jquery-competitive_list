@@ -39,9 +39,6 @@
       $(document.body).on 'click', '#bootstrap_modal .select_winner_button', (event) =>
         event.preventDefault()
         @appointWinnerOfMatchByInput()
-    
-    @meaningOfLife: ->
-      return 42
         
     start: () ->     
       matchesAlreadyExist = false
@@ -219,7 +216,7 @@
         modalTitle = 'No matches to rate left.' 
         modalFooterHtml = """
   <p>
-    <button type="button" class="cancel_tournament_button" class="btn">Save match results and close window</button>
+    <button type="button" class="cancel_tournament_button btn btn-default">Save match results and close window</button>
   </p>      
   """      
       else
@@ -258,26 +255,30 @@
   """
         modalFooterHtml = """
   <p>
-    <button type="button" class="cancel_tournament_button" class="btn">Save match results and close window</button> &nbsp;&nbsp;&nbsp;&nbsp;
-    <button type="button" class="select_winner_button" class="btn btn-primary">Submit</button>
+    <button type="button" class="cancel_tournament_button btn btn-default">Save match results and close window</button> &nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="button" class="select_winner_button btn btn-primary">Submit</button>
   </p>
   """
         
       modalBodyHtml += autoWinnerMatchesHtml
          
       html = """
-  <form class="form-inline" style="margin:0px;">
-    <div class="modal-header">
-      <button type="button" id="close_bootstrap_modal_button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      <h3>#{modalTitle}</h3>
+  <div class="modal-dialog">
+    <div class="modal-content">    
+      <form class="form-inline" style="margin:0px;">
+        <div class="modal-header">
+          <button type="button" id="close_bootstrap_modal_button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h3>#{modalTitle}</h3>
+        </div>
+        <div class="modal-body" style="overflow-y:auto;">
+          #{modalBodyHtml}
+        </div>
+        <div class="modal-footer" style="text-align:left;">
+          #{modalFooterHtml}
+        </div>
+      </form>
     </div>
-    <div class="modal-body" style="overflow-y:auto;">
-      #{modalBodyHtml}
-    </div>
-    <div class="modal-footer" style="text-align:left;">
-      #{modalFooterHtml}
-    </div>
-  </form>
+  </div>
   """
   
       $('#bootstrap_modal').html(html)
